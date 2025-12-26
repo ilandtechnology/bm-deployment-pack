@@ -37,23 +37,23 @@ DISM /Online /Cleanup-Image /StartComponentCleanup /ResetBase
 & "$PSScriptRoot\delprof.exe" /Q /I /D:180
 
 # Remove unwanted software
-$uninstallSoftwares = @(
-    "SonicWall NetExtender",
-    "TreeSize Free"
-)
+# $uninstallSoftwares = @(
+#     "SonicWall NetExtender",
+#     "TreeSize Free"
+# )
 
-$wave = Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion"
-if ($wave.DisplayVersion -like "24H2" -or $wave.DisplayVersion -like "25H2") {
-    $uninstallSoftwares += "7-Zip"
-}
+# $wave = Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion"
+# if ($wave.DisplayVersion -like "24H2" -or $wave.DisplayVersion -like "25H2") {
+#     $uninstallSoftwares += "7-Zip"
+# }
 
-foreach ($software in $uninstallSoftwares) {
-    $apps = Get-WmiObject -Query "SELECT * FROM Win32_Product WHERE Name LIKE '$software%'"
-    Write-Host "Removendo $software..." -ForegroundColor Yellow
-    foreach ($app in $apps) {
-        $app.Uninstall()
-    }
-}
+# foreach ($software in $uninstallSoftwares) {
+#     $apps = Get-WmiObject -Query "SELECT * FROM Win32_Product WHERE Name LIKE '$software%'"
+#     Write-Host "Removendo $software..." -ForegroundColor Yellow
+#     foreach ($app in $apps) {
+#         $app.Uninstall()
+#     }
+# }
 
 Set-Culture -CultureInfo pt-BR
 Set-WinSystemLocale -SystemLocale pt-BR
