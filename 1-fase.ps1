@@ -27,7 +27,7 @@ catch {
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::TLS12
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
 Install-Script -Name Get-WindowsAutopilotInfo -Force
-Get-WindowsAutopilotInfo -Online -AddToTenant -ErrorAction Stop
+Get-WindowsAutopilotInfo -Online -ErrorAction Stop
 
 # Optimize the system
 chkntfs /D
