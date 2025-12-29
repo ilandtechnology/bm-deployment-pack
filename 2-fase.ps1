@@ -2,8 +2,10 @@ $WallpaperStyle = "2"
 $TileWallpaper   = "0"
 $UserProfilesPath = "$env:SystemDrive\Users"
 
-$destFolder = "$env:SystemDrive\Temp\provisioning"
-$ppkgPath = "$destFolder\bm-deployment-pack-main\intune-bm.ppkg"
+$ppkgName = "BM"
+$origFolder = "$env:SystemDrive\Temp\provisioning"
+$destFolder = "$env:SystemDrive\Windows\Provisioning\Packages"
+$ppkgPath = "$origFolder\bm-deployment-pack-main\intune-bm.ppkg"
 
 # Ensure the script is running with elevated permissions
 if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
@@ -42,4 +44,9 @@ if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
 # }
 
 # Register computer in Microsoft Intune & Entra ID
+$ppkgPath = (Copy-Item -Path $ppkgPath -Destination $destFolder -PassThru -Force).VersionInfo.FileName
+
+Get-ProvisioningPackage | Where-Object { $_.PackageName -eq $ppkgName } | ForEach-Object {
+    Uninstall-ProvisioningPackage -PackagePath $_.PackageId -ForceUninstall -QuietUninstall
+}
 Install-ProvisioningPackage -PackagePath $ppkgPath -ForceInstall -QuietInstall
