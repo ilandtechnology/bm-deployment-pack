@@ -24,10 +24,10 @@ catch {
 }
 
 # Join the computer to autopilot
-[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::TLS12
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
-Install-Script -Name Get-WindowsAutopilotInfo -Force
-Get-WindowsAutopilotInfo -Online -ErrorAction Stop
+# [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::TLS12
+# Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
+# Install-Script -Name Get-WindowsAutopilotInfo -Force -Confirm:$false
+# Get-WindowsAutopilotInfo -Online -ErrorAction Stop
 
 # Optimize the system
 chkntfs /D
