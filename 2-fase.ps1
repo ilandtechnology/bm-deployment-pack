@@ -4,7 +4,6 @@ $UserProfilesPath = "$env:SystemDrive\Users"
 
 $ppkgName = "BM"
 $origFolder = "$env:SystemDrive\Temp\provisioning"
-$destFolder = "$env:SystemDrive\Windows\Provisioning\Packages"
 $ppkgPath = "$origFolder\bm-deployment-pack-main\intune-bm.ppkg"
 
 # Ensure the script is running with elevated permissions
