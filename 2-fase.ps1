@@ -44,7 +44,7 @@ if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
 # }
 
 # Register computer in Microsoft Intune & Entra ID
-$ppkgPath = (Copy-Item -Path $ppkgPath -Destination $destFolder -PassThru -Force).VersionInfo.FileName
+# $ppkgPath = (Copy-Item -Path $ppkgPath -Destination $destFolder -PassThru -Force).VersionInfo.FileName
 
 Get-ProvisioningPackage | Where-Object { $_.PackageName -eq $ppkgName } | ForEach-Object {
     Uninstall-ProvisioningPackage -PackagePath $_.PackageId -ForceUninstall -QuietUninstall
