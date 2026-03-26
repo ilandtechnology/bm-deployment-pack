@@ -2,9 +2,9 @@ $WallpaperStyle = "2"
 $TileWallpaper   = "0"
 $UserProfilesPath = "$env:SystemDrive\Users"
 
-$ppkgName = "BM"
+$ppkgName = "ESTRATÉGICA - Microsoft Intune & Entra ID"
 $origFolder = "$env:SystemDrive\Temp\provisioning"
-$ppkgPath = "$origFolder\bm-deployment-pack-main\intune-bm.ppkg"
+$ppkgPath = "$origFolder\estrategica-deployment-pack-main\intune-estrategica.ppkg"
 
 # Ensure the script is running with elevated permissions
 if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {

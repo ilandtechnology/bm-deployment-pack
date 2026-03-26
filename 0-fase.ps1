@@ -1,4 +1,4 @@
-$repoUrl = "https://github.com/ilandtechnology/bm-deployment-pack"
+$repoUrl = "https://github.com/ilandtechnology/estrategica-deployment-pack"
 $destFolder = "$env:SystemDrive\Temp\provisioning"
 $zipPath = "$destFolder\repo.zip"
 
@@ -18,4 +18,4 @@ Invoke-WebRequest -Uri "$repoUrl/archive/refs/heads/main.zip" -OutFile $zipPath
 Expand-Archive -Path $zipPath -DestinationPath $destFolder -Force
 Remove-Item $zipPath -ErrorAction SilentlyContinue -Force
 
-& "$destFolder\bm-deployment-pack-main\1-fase.ps1"
+& "$destFolder\estrategica-deployment-pack-main\1-fase.ps1"
